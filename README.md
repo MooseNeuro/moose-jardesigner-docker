@@ -70,7 +70,7 @@ docker run -d \
   -p 5000:5000 \
   -v moose_workspace:/workspace \
   -v jardesigner_data:/root/.local/share/jardesigner \
-  jayesh8050/moose-jardesigner:latest
+  mooseneuro/moose-jardesigner:latest
 ```
 
 **What each part of this command does:**
@@ -84,7 +84,7 @@ docker run -d \
 | `-p 5000:5000` | Same idea, for port 5000 — this is JARDesigner. |
 | `-v moose_workspace:/workspace` | Creates (or reuses) a named storage volume called `moose_workspace` and connects it to the `/workspace` folder inside the container. Any notebooks/scripts you save there survive even if the container is later removed. |
 | `-v jardesigner_data:/root/.local/share/jardesigner` | Same idea, for JARDesigner's own saved projects and uploads. |
-| `jayesh8050/moose-jardesigner:latest` | The image to run — this gets automatically downloaded from Docker Hub the first time you run this command, and reused after that. |
+| `mooseneuro/moose-jardesigner:latest` | The image to run — this gets automatically downloaded from Docker Hub the first time you run this command, and reused after that. |
 
 The first time you run this, it will take a minute or two to download the
 image (a few hundred MB). After that, starting/stopping is instant.
@@ -106,12 +106,12 @@ command:
 # Only MOOSE + JupyterLab
 docker run -d --name moose-jardesigner -p 8888:8888 \
   -v moose_workspace:/workspace \
-  jayesh8050/moose-jardesigner:latest moose
+  mooseneuro/moose-jardesigner:latest moose
 
 # Only JARDesigner
 docker run -d --name moose-jardesigner -p 5000:5000 \
   -v jardesigner_data:/root/.local/share/jardesigner \
-  jayesh8050/moose-jardesigner:latest jardesigner
+  mooseneuro/moose-jardesigner:latest jardesigner
 ```
 
 The word at the very end (`moose`, `jardesigner`, or `both`) tells the
